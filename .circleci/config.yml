@@ -3,5 +3,9 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.11.2
+    working_directory: /go/src/github.com/fhiyo/circleci-tutorial-with-golang
     steps:
+      - checkout
       - run: echo "hello world"
+      - run: go get -v -t -d ./...
+      - run: go test -v ./...
